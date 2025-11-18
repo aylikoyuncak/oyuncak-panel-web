@@ -50,8 +50,8 @@ export default function SubscriptionsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-10 w-10 border-3 border-gray-200 border-t-[#e52b3f]"></div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }
@@ -74,10 +74,10 @@ export default function SubscriptionsPage() {
           </div>
 
           {/* Filtreler */}
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row gap-2">
             <button
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'all'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -87,7 +87,7 @@ export default function SubscriptionsPage() {
             </button>
             <button
               onClick={() => setFilter('today')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'today'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -97,7 +97,7 @@ export default function SubscriptionsPage() {
             </button>
             <button
               onClick={() => setFilter('last_week')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'last_week'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -107,7 +107,7 @@ export default function SubscriptionsPage() {
             </button>
             <button
               onClick={() => setFilter('last_month')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'last_month'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -149,7 +149,22 @@ export default function SubscriptionsPage() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {subscriptions.map((subscription) => (
+            {subscriptions.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="px-6 py-16">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz abonelik bulunmuyor</h3>
+                    <p className="text-sm text-gray-500">Henüz hiç abonelik kaydı yok</p>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              subscriptions.map((subscription) => (
               <tr key={subscription.subscriptionId} className="hover:bg-gray-50">
                 <td className="px-6 py-4">
                   <div className="text-sm font-medium text-gray-900">
@@ -184,7 +199,8 @@ export default function SubscriptionsPage() {
                   </Link>
                 </td>
               </tr>
-            ))}
+              ))
+            )}
           </tbody>
           </table>
         </div>

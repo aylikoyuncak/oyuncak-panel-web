@@ -63,14 +63,8 @@ export default function OrdersPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="relative">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-200"></div>
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent absolute top-0 left-0"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">🛒</span>
-          </div>
-        </div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }
@@ -95,10 +89,10 @@ export default function OrdersPage() {
           </div>
 
           {/* Filtreler */}
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row gap-2">
             <button
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'all'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -108,7 +102,7 @@ export default function OrdersPage() {
             </button>
             <button
               onClick={() => setFilter('today')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'today'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -118,7 +112,7 @@ export default function OrdersPage() {
             </button>
             <button
               onClick={() => setFilter('last_week')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'last_week'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -128,7 +122,7 @@ export default function OrdersPage() {
             </button>
             <button
               onClick={() => setFilter('last_month')}
-              className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
+              className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
                 filter === 'last_month'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -173,7 +167,22 @@ export default function OrdersPage() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {orders.map((order) => (
+            {orders.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="px-6 py-16">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz sipariş bulunmuyor</h3>
+                    <p className="text-sm text-gray-500">Henüz hiç sipariş kaydı yok</p>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              orders.map((order) => (
               <tr key={order.orderId} className="hover:bg-gray-50">
                 <td className="px-6 py-4">
                   <code className="text-xs font-mono bg-gray-100 px-2 py-1 rounded text-gray-900">
@@ -222,7 +231,8 @@ export default function OrdersPage() {
                   </Link>
                 </td>
               </tr>
-            ))}
+              ))
+            )}
           </tbody>
           </table>
         </div>

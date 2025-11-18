@@ -47,14 +47,8 @@ export default function UsersPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="relative">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-200"></div>
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent absolute top-0 left-0"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">👥</span>
-          </div>
-        </div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }
@@ -113,7 +107,22 @@ export default function UsersPage() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {users.map((user) => {
+            {users.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-16">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz kullanıcı bulunmuyor</h3>
+                    <p className="text-sm text-gray-500">Henüz hiç kullanıcı kaydı yok</p>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              users.map((user) => {
               const roleBadge = getRoleBadge(user.role);
               return (
                 <tr key={user.id} className="hover:bg-gray-50">
@@ -150,7 +159,7 @@ export default function UsersPage() {
                   </td>
                 </tr>
               );
-            })}
+            }))}
           </tbody>
           </table>
         </div>

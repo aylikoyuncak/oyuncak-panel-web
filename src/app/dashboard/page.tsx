@@ -27,8 +27,8 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-10 w-10 border-3 border-gray-200 border-t-[#e52b3f]"></div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }

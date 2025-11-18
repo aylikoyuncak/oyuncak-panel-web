@@ -59,14 +59,8 @@ export default function CampaignsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="relative">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-200"></div>
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent absolute top-0 left-0"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">🎯</span>
-          </div>
-        </div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }
@@ -126,7 +120,31 @@ export default function CampaignsPage() {
             </tr>
           </thead>
             <tbody className="bg-white divide-y divide-gray-100">
-            {campaigns.map((campaign) => (
+            {campaigns.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="px-6 py-16">
+                  <div className="flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz kampanya eklenmemiş</h3>
+                    <p className="text-sm text-gray-500 mb-4">İlk kampanyanızı oluşturarak başlayın</p>
+                    <Link
+                      href="/dashboard/campaigns/add"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e52b3f] to-[#ff4757] text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      </svg>
+                      Yeni Kampanya Ekle
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              campaigns.map((campaign) => (
               <tr key={campaign.id} className={isExpired(campaign.expiration) ? 'bg-gray-50 opacity-60' : ''}>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
@@ -184,7 +202,8 @@ export default function CampaignsPage() {
                   </button>
                 </td>
               </tr>
-            ))}
+              ))
+            )}
           </tbody>
           </table>
         </div>

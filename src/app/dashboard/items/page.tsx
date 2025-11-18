@@ -54,14 +54,8 @@ export default function ItemsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="relative">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-200"></div>
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent absolute top-0 left-0"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">📦</span>
-          </div>
-        </div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#e52b3f]"></div>
       </div>
     );
   }
@@ -126,8 +120,25 @@ export default function ItemsPage() {
             <tbody className="bg-white divide-y divide-gray-200">
               {items.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
-                    Henüz ürün eklenmemiş
+                  <td colSpan={7} className="px-6 py-16">
+                    <div className="flex flex-col items-center justify-center text-center">
+                      <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz ürün eklenmemiş</h3>
+                      <p className="text-sm text-gray-500 mb-4">İlk ürününüzü ekleyerek başlayın</p>
+                      <Link
+                        href="/dashboard/items/add"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e52b3f] to-[#ff4757] text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Yeni Ürün Ekle
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ) : (
@@ -201,9 +212,23 @@ export default function ItemsPage() {
       {/* Mobile Card View */}
       <div className="lg:hidden space-y-4">
         {items.length === 0 ? (
-          <div className="bg-gradient-to-br from-white to-pink-50/50 rounded-3xl shadow-xl p-12 text-center border-2 border-pink-200/50">
-            <span className="text-6xl mb-4 block">📦</span>
-            <p className="text-gray-600 font-medium">Henüz ürün eklenmemiş</p>
+          <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Henüz ürün eklenmemiş</h3>
+            <p className="text-sm text-gray-500 mb-4">İlk ürününüzü ekleyerek başlayın</p>
+            <Link
+              href="/dashboard/items/add"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#e52b3f] to-[#ff4757] text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Yeni Ürün Ekle
+            </Link>
           </div>
         ) : (
           items.map((item) => (
