@@ -1,0 +1,5700 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Monthly Toy API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/admin/item": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/item-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoPagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoPagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoPagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/get-item/{itemId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/delete-item/{itemId}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/campaign": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CampaignDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/campaign-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoPagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoPagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoPagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/get-campaign/{campaignId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "campaignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/delete-campaign/{campaignId}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "campaignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/subscription-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListAdminResponsePagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListAdminResponsePagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListAdminResponsePagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/subscription-detail/{subscriptionId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionDetailResponseBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionDetailResponseBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionDetailResponseBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/update-subscription-status": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/order-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListAdminResponsePagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListAdminResponsePagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListAdminResponsePagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/order-detail/{orderId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailResponseBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailResponseBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailResponseBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/update-order-statuses": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/dashboard-data": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/user-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/user-detail/{userId}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/register": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/login": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/admin-delete/{userId}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/admin-list": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListDtoPagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBaseModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBaseModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBaseModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBaseModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/preferences-items": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferencesItemsViewModelBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferencesItemsViewModelBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferencesItemsViewModelBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/preferences/{userId}": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChildInfoResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChildInfoResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChildInfoResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/preferences": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChildInfoRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChildInfoRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChildInfoRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/delivery": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/basket": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "parameters": [
+          {
+            "name": "campaignCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasketResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasketResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasketResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/payment-request": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/notification-settings": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationSettingsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationSettingsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NotificationSettingsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationSettingsDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/personal-information": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalInformationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalInformationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonalInformationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalInformationDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalInformationDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalInformationDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/addresses": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressListResponseDtoListBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressListResponseDtoListBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressListResponseDtoListBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/address/{addresId}": {
+      "get": {
+        "tags": [
+          "Base"
+        ],
+        "parameters": [
+          {
+            "name": "addresId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/address": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/delete-address/{id}": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/subscription-list": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListResponsePagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListResponsePagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionListResponsePagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/update-subscription-status": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/base/order-list": {
+      "post": {
+        "tags": [
+          "Base"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponsePagedResultBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponsePagedResultBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponsePagedResultBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/list-products": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IyzicoPagingRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IyzicoPagingRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IyzicoPagingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResourceResponsePagingDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResourceResponsePagingDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResourceResponsePagingDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/start-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/upgrade-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionUpgradeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionUpgradeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionUpgradeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/retry-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRetryRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRetryRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRetryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/cancel-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/activate-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/retrieve-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IyzipayResourceV2BaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/retrieve-payment": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrievePaymentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrievePaymentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrievePaymentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/search-subscription": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSearchRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSearchRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionSearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionResourceResponsePagingDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionResourceResponsePagingDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionResourceResponsePagingDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/create-customer": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/update-customer": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerResourceResponseDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/payment-detail": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentPlanDetailDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentPlanDetailDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentPlanDetailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanResourceResponseDataBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanResourceResponseDataBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanResourceResponseDataBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/init-3ds-payment": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponseDtoBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/update-subscription-payments": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "parameters": [
+          {
+            "name": "SecretKey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/update-subscription-card": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionCardRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionCardRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionCardRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSubscriptionCardResponseBaseCommandResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSubscriptionCardResponseBaseCommandResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSubscriptionCardResponseBaseCommandResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/iyzico/card-update-callback": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/iyzico/3ds-callback": {
+      "post": {
+        "tags": [
+          "Iyzico"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "conversationId": {
+                    "type": "string"
+                  },
+                  "paymentId": {
+                    "type": "string"
+                  },
+                  "mdStatus": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "status": {
+                  "style": "form"
+                },
+                "conversationId": {
+                  "style": "form"
+                },
+                "paymentId": {
+                  "style": "form"
+                },
+                "mdStatus": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressListResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDefault": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressListResponseDtoListBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressListResponseDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressRequestDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "district": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressInfo": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "isBillingAddress": {
+            "type": "boolean"
+          },
+          "invoiceType": {
+            "$ref": "#/components/schemas/InvoiceTypes"
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxOffice": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxId": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDefault": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "district": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressInfo": {
+            "type": "string",
+            "nullable": true
+          },
+          "isBillingAddress": {
+            "type": "boolean"
+          },
+          "invoiceType": {
+            "$ref": "#/components/schemas/InvoiceTypes"
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxOffice": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxId": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressResponseDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/AddressResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressUserDto": {
+        "type": "object",
+        "properties": {
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "district": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressInfo": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxOffice": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasketResponseDto": {
+        "type": "object",
+        "properties": {
+          "packageTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "badgeIconTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "packagePrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "packagePriceTotal": {
+            "type": "string",
+            "nullable": true
+          },
+          "packagePriceTotalValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "packageBadgeIconPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "premiumToyPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "premiumToyPriceTotal": {
+            "type": "string",
+            "nullable": true
+          },
+          "premiumToyPriceTotalValue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "premiumToyBadgeIconPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalCountValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "pricingPlanId": {
+            "type": "string",
+            "nullable": true
+          },
+          "packageLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "premiumToyQuantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BasketResponseDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/BasketResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CampaignDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "discountAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "discountPercentage": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "expiration": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CampaignDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CampaignDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CampaignDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CampaignDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CampaignDtoPagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CampaignDtoPagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildInfoRequestDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Genders"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildItemDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildInfoResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Genders"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "childItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildItemDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildInfoResponseDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ChildInfoResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildInfoUserDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Genders"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChildItemDto": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "pricingPlanId": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "childInfoId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConvertedPayout": {
+        "type": "object",
+        "properties": {
+          "paidPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionFee": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageRateAmountMerchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageRateAmountSubMerchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "subMerchantPayoutAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantPayoutAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziConversionRate": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziConversionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerResource": {
+        "type": "object",
+        "properties": {
+          "referenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "gsmNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "shippingAddress": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerResourceResponseData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CustomerResource"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerResourceResponseDataBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CustomerResourceResponseData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DashboardData": {
+        "type": "object",
+        "properties": {
+          "totalSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activeSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastMonthSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastWeekSubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastDaySubscriptions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalOrderPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalOrderPriceLastMonth": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalOrderPriceLastWeek": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalOrderPriceLastDay": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DashboardDataBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DashboardData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Genders": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "InvoiceTypes": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "packageLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "discountPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "packageCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "itemType": {
+            "$ref": "#/components/schemas/ItemTypes"
+          },
+          "pricingPlanId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mostPreffered": {
+            "type": "boolean"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "mostPrefferedTitle": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ItemDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemDtoPagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ItemDtoPagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemTypes": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "IyzicoPagingRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IyzipayResourceV2": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IyzipayResourceV2BaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/IyzipayResourceV2"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationSettingsDto": {
+        "type": "object",
+        "properties": {
+          "allowEmailNotifications": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allowSmsNotifications": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationSettingsDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/NotificationSettingsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderDetailResponse": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "$ref": "#/components/schemas/OrderListResponse"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressResponseDto"
+          },
+          "childInfo": {
+            "$ref": "#/components/schemas/ChildInfoUserDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderDetailResponseBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrderDetailResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListAdminResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListAdminResponsePagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderListAdminResponse"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListAdminResponsePagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrderListAdminResponsePagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListResponsePagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderListResponse"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderListResponsePagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrderListResponsePagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderUserDto": {
+        "type": "object",
+        "properties": {
+          "orderNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaginationRequest": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "filter": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Payment": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "paidPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "installment": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "fraudStatus": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "merchantCommissionRate": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantCommissionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionFee": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardType": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardAssociation": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardFamily": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardUserKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "binNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastFourDigits": {
+            "type": "string",
+            "nullable": true
+          },
+          "basketId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentItem"
+            },
+            "nullable": true
+          },
+          "connectorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "authCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "hostReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "phase": {
+            "type": "string",
+            "nullable": true
+          },
+          "mdStatus": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentAttemptDto": {
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/Payment"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentItem": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentTransactionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionStatus": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "paidPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantCommissionRate": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantCommissionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionRateAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "iyziCommissionFee": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageRate": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageRateAmountMerchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageRateAmountSubMerchant": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockageResolvedDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "subMerchantKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "subMerchantPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "subMerchantPayoutRate": {
+            "type": "string",
+            "nullable": true
+          },
+          "subMerchantPayoutAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchantPayoutAmount": {
+            "type": "string",
+            "nullable": true
+          },
+          "convertedPayout": {
+            "$ref": "#/components/schemas/ConvertedPayout"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentPlanDetailDto": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlanReferenceCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentRequestDto": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardHolderName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "expirationMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expirationYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cvc": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlanId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentResponseDto": {
+        "type": "object",
+        "properties": {
+          "redirectUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "threedContent": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerReferenceCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentResponseDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PaymentResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalInformationDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonalInformationDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PersonalInformationDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Plan": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlanResource": {
+        "type": "object",
+        "properties": {
+          "referenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "productReferenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentInterval": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentIntervalCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "trialPeriodDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "planPaymentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "recurrenceCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlanResourceResponseData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PlanResource"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlanResourceResponseDataBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PlanResourceResponseData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreferencesItemsViewModel": {
+        "type": "object",
+        "properties": {
+          "premiumToys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PremiumToyResponseDto"
+            },
+            "nullable": true
+          },
+          "toyPackages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToyPackageDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreferencesItemsViewModelBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/PreferencesItemsViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PremiumToyResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "discountedPrice": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductResource": {
+        "type": "object",
+        "properties": {
+          "referenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Plan"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductResourceResponsePaging": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductResource"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductResourceResponsePagingData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductResourceResponsePaging"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductResourceResponsePagingDataBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductResourceResponsePagingData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterRequestDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactPermission": {
+            "type": "boolean"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResetPasswordRequestDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RetrievePaymentRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentConversationId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Roles": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "StringBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionDetailResponse": {
+        "type": "object",
+        "properties": {
+          "subscription": {
+            "$ref": "#/components/schemas/SubscriptionListResponse"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressResponseDto"
+          },
+          "childInfo": {
+            "$ref": "#/components/schemas/ChildInfoUserDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionDetailResponseBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionDetailResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListAdminResponse": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subscriptionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListAdminResponsePagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionListAdminResponse"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListAdminResponsePagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionListAdminResponsePagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListResponse": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "subscriptionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListResponsePagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionListResponse"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionListResponsePagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionListResponsePagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionOrder": {
+        "type": "object",
+        "properties": {
+          "referenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "startPeriod": {
+            "type": "string",
+            "nullable": true
+          },
+          "endPeriod": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderPaymentAttempts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentAttemptDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionResource": {
+        "type": "object",
+        "properties": {
+          "referenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentReferenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlanReferenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerReferenceCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "trialDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "trialStartDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "trialEndDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "customerEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionOrders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionOrder"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionResourceResponsePaging": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionResource"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pageCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionResourceResponsePagingData": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "systemTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionResourceResponsePaging"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionResourceResponsePagingDataBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SubscriptionResourceResponsePagingData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionRetryRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionOrderReferenceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionSearchRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlanReferenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionUpgradeRequest": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "nullable": true
+          },
+          "conversationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "newPricingPlanReferenceCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionUserDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "subscriptionReferenceId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenModel": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenModelBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TokenModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ToyPackageDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "packageLength": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sort": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "discountedPrice": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricingPlanId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mostPreffered": {
+            "type": "boolean"
+          },
+          "mostPrefferedTitle": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateOrderStatusesRequest": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSubscriptionCardRequestDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSubscriptionCardResponse": {
+        "type": "object",
+        "properties": {
+          "formContent": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSubscriptionCardResponseBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UpdateSubscriptionCardResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSubscriptionStatusRequest": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserBaseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "userStep": {
+            "$ref": "#/components/schemas/UserSteps"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Roles"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserBaseModelBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserBaseModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDetailsDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "childInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildInfoUserDto"
+            },
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressUserDto"
+            },
+            "nullable": true
+          },
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionUserDto"
+            },
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderUserDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDetailsDtoBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserDetailsDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserListDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserListDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserListDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserListDtoPagedResultBaseCommandResult": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserListDtoPagedResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserSteps": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Write only the token without bearer at the beginning.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
