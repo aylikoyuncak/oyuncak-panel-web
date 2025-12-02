@@ -1,6 +1,5 @@
 .gitignore
 .npmignore
-.openapi-generator-ignore
 api.ts
 base.ts
 common.ts
@@ -17,6 +16,7 @@ docs/AuthApi.md
 docs/BaseApi.md
 docs/BasketResponseDto.md
 docs/BasketResponseDtoBaseCommandResult.md
+docs/Box.md
 docs/CampaignDto.md
 docs/CampaignDtoBaseCommandResult.md
 docs/CampaignDtoPagedResult.md
@@ -77,6 +77,7 @@ docs/ProductResource.md
 docs/ProductResourceResponsePaging.md
 docs/ProductResourceResponsePagingData.md
 docs/ProductResourceResponsePagingDataBaseCommandResult.md
+docs/RegisterItemDto.md
 docs/RegisterRequestDto.md
 docs/ResetPasswordRequestDto.md
 docs/RetrievePaymentRequest.md

@@ -81,7 +81,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white font-sans" data-dashboard>
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
@@ -98,7 +98,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       >
         <div className="flex flex-col h-full">
               {/* Logo */}
-              <div className="h-20 px-6 flex items-center justify-between border-b border-gray-100">
+              <div className="h-16 px-6 flex items-center justify-between border-b border-gray-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#e52b3f] to-[#ff4757] flex items-center justify-center shadow-lg">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

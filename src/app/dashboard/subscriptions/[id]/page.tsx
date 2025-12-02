@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { adminApi } from '@/lib/api-client';
 import { SubscriptionDetailResponse } from '@/api/generated';
+import { getBoxDisplayName } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
 export default function SubscriptionDetailPage() {
@@ -14,6 +15,7 @@ export default function SubscriptionDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [newStatus, setNewStatus] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   useEffect(() => {
     fetchSubscriptionDetail();
@@ -34,11 +36,14 @@ export default function SubscriptionDetailPage() {
     }
   };
 
-  const handleStatusUpdate = async () => {
+  const handleStatusUpdateClick = () => {
     if (!newStatus || newStatus === data?.subscription?.status) return;
-    
-    if (!confirm('Abonelik durumunu değiştirmek istediğinizden emin misiniz?')) return;
+    setShowConfirmModal(true);
+  };
 
+  const handleStatusUpdate = async () => {
+    setShowConfirmModal(false);
+    
     try {
       setIsUpdating(true);
       const response = await adminApi.apiAdminUpdateSubscriptionStatusPost({
@@ -111,11 +116,6 @@ export default function SubscriptionDetailPage() {
             label="Başlangıç Tarihi"
             value={subscription?.startDate ? new Date(subscription.startDate).toLocaleDateString('tr-TR') : '-'}
           />
-          <InfoItem
-            label="Bitiş Tarihi"
-            value={subscription?.endDate ? new Date(subscription.endDate).toLocaleDateString('tr-TR') : 'Devam ediyor'}
-          />
-          <InfoItem label="Referans ID" value={subscription?.subscriptionReferenceId} />
         </div>
       </div>
 
@@ -179,7 +179,7 @@ export default function SubscriptionDetailPage() {
               label="Cinsiyet"
               value={childInfo.gender === 1 ? 'Erkek' : childInfo.gender === 2 ? 'Kız' : 'Belirtilmemiş'}
             />
-            <InfoItem label="Doğum Tarihi" value={childInfo.dateOfBirth} />
+            <InfoItem label="Yaş Grubu" value={getBoxDisplayName(childInfo.boxNumber)} />
           </div>
         </div>
       )}
@@ -204,7 +204,7 @@ export default function SubscriptionDetailPage() {
             </select>
           </div>
           <button
-            onClick={handleStatusUpdate}
+            onClick={handleStatusUpdateClick}
             disabled={isUpdating || newStatus === subscription?.status}
             className="w-full sm:w-auto px-6 py-2 bg-gradient-to-r from-[#e52b3f] to-[#ff4757] text-white rounded-lg hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
@@ -212,6 +212,44 @@ export default function SubscriptionDetailPage() {
           </button>
         </div>
       </div>
+
+      {/* Confirm Modal */}
+      {showConfirmModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full mx-4">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-900">Durum Değişikliği</h3>
+                <p className="text-sm text-gray-500 mt-1">Bu işlem geri alınamaz</p>
+              </div>
+            </div>
+            <p className="text-gray-700 mb-6">
+              Abonelik durumunu <span className="font-semibold text-gray-900">{subscription?.status}</span> durumundan{' '}
+              <span className="font-semibold text-[#e52b3f]">{newStatus}</span> durumuna değiştirmek istediğinizden emin misiniz?
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowConfirmModal(false)}
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium text-gray-700"
+              >
+                İptal
+              </button>
+              <button
+                onClick={handleStatusUpdate}
+                disabled={isUpdating}
+                className="flex-1 px-4 py-2.5 bg-gradient-to-r from-[#e52b3f] to-[#ff4757] text-white rounded-lg hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+              >
+                {isUpdating ? 'Güncelleniyor...' : 'Evet, Değiştir'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

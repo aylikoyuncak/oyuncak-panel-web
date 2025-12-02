@@ -122,6 +122,16 @@ export interface BasketResponseDtoBaseCommandResult {
     'message'?: string | null;
     'data'?: BasketResponseDto;
 }
+
+export const Box = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3
+} as const;
+
+export type Box = typeof Box[keyof typeof Box];
+
+
 export interface CampaignDto {
     'id'?: string | null;
     'code'?: string | null;
@@ -150,17 +160,17 @@ export interface ChildInfoRequestDto {
     'id'?: string | null;
     'userId'?: string | null;
     'fullName'?: string | null;
-    'dateOfBirth'?: string | null;
     'gender'?: Genders;
     'items'?: Array<ChildItemDto> | null;
+    'boxNumber'?: Box;
 }
 
 
 export interface ChildInfoResponseDto {
     'id'?: string | null;
     'fullName'?: string | null;
-    'dateOfBirth'?: string | null;
     'gender'?: Genders;
+    'boxNumber'?: Box;
     'userId'?: string;
     'childItems'?: Array<ChildItemDto> | null;
 }
@@ -173,7 +183,7 @@ export interface ChildInfoResponseDtoBaseCommandResult {
 }
 export interface ChildInfoUserDto {
     'fullName'?: string | null;
-    'dateOfBirth'?: string | null;
+    'boxNumber'?: Box;
     'gender'?: Genders;
 }
 
@@ -598,8 +608,13 @@ export interface ProductResourceResponsePagingDataBaseCommandResult {
     'message'?: string | null;
     'data'?: ProductResourceResponsePagingData;
 }
+export interface RegisterItemDto {
+    'itemId'?: string;
+    'quantity'?: number | null;
+    'pricingPlanId'?: string | null;
+    'childInfoId'?: string | null;
+}
 export interface RegisterRequestDto {
-    'userId'?: string;
     'firstName'?: string | null;
     'lastName'?: string | null;
     'email'?: string | null;
@@ -608,7 +623,13 @@ export interface RegisterRequestDto {
     'confirmPassword'?: string | null;
     'contactPermission'?: boolean;
     'role'?: number | null;
+    'childName'?: string | null;
+    'childGender'?: Genders;
+    'boxNumber'?: Box;
+    'items'?: Array<RegisterItemDto> | null;
 }
+
+
 export interface ResetPasswordRequestDto {
     'email'?: string | null;
     'newPassword'?: string | null;

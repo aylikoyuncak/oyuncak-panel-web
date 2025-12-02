@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fullName** | **string** |  | [optional] [default to undefined]
-**dateOfBirth** | **string** |  | [optional] [default to undefined]
+**boxNumber** | [**Box**](Box.md) |  | [optional] [default to undefined]
 **gender** | [**Genders**](Genders.md) |  | [optional] [default to undefined]
 
 ## Example
@@ -16,7 +16,7 @@ import { ChildInfoUserDto } from './api';
 
 const instance: ChildInfoUserDto = {
     fullName,
-    dateOfBirth,
+    boxNumber,
     gender,
 };
 ```

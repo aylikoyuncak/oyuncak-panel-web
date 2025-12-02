@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { adminApi } from '@/lib/api-client';
 import { UserDetailsDto } from '@/api/generated';
+import { getBoxDisplayName } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
 export default function UserDetailPage() {
@@ -128,7 +129,7 @@ export default function UserDetailPage() {
                 <h3 className="font-medium text-gray-900 mb-2">{child.fullName}</h3>
                 <div className="space-y-1 text-sm text-gray-600">
                   <p>Cinsiyet: {child.gender === 1 ? 'Erkek' : child.gender === 2 ? 'Kız' : 'Belirtilmemiş'}</p>
-                  <p>Doğum Tarihi: {child.dateOfBirth ? new Date(child.dateOfBirth).toLocaleDateString('tr-TR') : '-'}</p>
+                  <p>Yaş Grubu: {getBoxDisplayName(child.boxNumber)}</p>
                 </div>
               </div>
             ))}

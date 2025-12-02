@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] [default to undefined]
 **fullName** | **string** |  | [optional] [default to undefined]
-**dateOfBirth** | **string** |  | [optional] [default to undefined]
 **gender** | [**Genders**](Genders.md) |  | [optional] [default to undefined]
+**boxNumber** | [**Box**](Box.md) |  | [optional] [default to undefined]
 **userId** | **string** |  | [optional] [default to undefined]
 **childItems** | [**Array&lt;ChildItemDto&gt;**](ChildItemDto.md) |  | [optional] [default to undefined]
 
@@ -20,8 +20,8 @@ import { ChildInfoResponseDto } from './api';
 const instance: ChildInfoResponseDto = {
     id,
     fullName,
-    dateOfBirth,
     gender,
+    boxNumber,
     userId,
     childItems,
 };

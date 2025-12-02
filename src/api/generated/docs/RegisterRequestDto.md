@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**userId** | **string** |  | [optional] [default to undefined]
 **firstName** | **string** |  | [optional] [default to undefined]
 **lastName** | **string** |  | [optional] [default to undefined]
 **email** | **string** |  | [optional] [default to undefined]
@@ -14,6 +13,10 @@ Name | Type | Description | Notes
 **confirmPassword** | **string** |  | [optional] [default to undefined]
 **contactPermission** | **boolean** |  | [optional] [default to undefined]
 **role** | **number** |  | [optional] [default to undefined]
+**childName** | **string** |  | [optional] [default to undefined]
+**childGender** | [**Genders**](Genders.md) |  | [optional] [default to undefined]
+**boxNumber** | [**Box**](Box.md) |  | [optional] [default to undefined]
+**items** | [**Array&lt;RegisterItemDto&gt;**](RegisterItemDto.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -21,7 +24,6 @@ Name | Type | Description | Notes
 import { RegisterRequestDto } from './api';
 
 const instance: RegisterRequestDto = {
-    userId,
     firstName,
     lastName,
     email,
@@ -30,6 +32,10 @@ const instance: RegisterRequestDto = {
     confirmPassword,
     contactPermission,
     role,
+    childName,
+    childGender,
+    boxNumber,
+    items,
 };
 ```
 

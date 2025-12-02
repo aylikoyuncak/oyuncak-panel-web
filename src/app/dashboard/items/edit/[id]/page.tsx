@@ -179,42 +179,46 @@ export default function EditItemPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Paket Kodu
+              Ürün Tipi *
             </label>
-            <input
-              type="number"
-              value={formData.packageCode}
-              onChange={(e) => setFormData({ ...formData, packageCode: e.target.value })}
+            <select
+              value={formData.itemType}
+              onChange={(e) => setFormData({ ...formData, itemType: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
-            />
+            >
+              <option value="1">Premium Oyuncak</option>
+              <option value="2">Oyuncak Paketi</option>
+            </select>
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Ürün Tipi *
-          </label>
-          <select
-            value={formData.itemType}
-            onChange={(e) => setFormData({ ...formData, itemType: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
-          >
-            <option value="1">Premium Oyuncak</option>
-            <option value="2">Oyuncak Paketi</option>
-          </select>
-        </div>
+        {formData.packageLength === '1' && (
+          <>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Iyzico Pricing Plan ID
+              </label>
+              <input
+                type="text"
+                value={formData.pricingPlanId}
+                onChange={(e) => setFormData({ ...formData, pricingPlanId: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
+              />
+            </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Iyzico Pricing Plan ID
-          </label>
-          <input
-            type="text"
-            value={formData.pricingPlanId}
-            onChange={(e) => setFormData({ ...formData, pricingPlanId: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
-          />
-        </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Kaç Premium Oyuncaklı Fiyatlama
+              </label>
+              <input
+                type="number"
+                value={formData.packageCode}
+                onChange={(e) => setFormData({ ...formData, packageCode: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
+              />
+            </div>
+          </>
+        )}
 
         <div className="flex items-center gap-2">
           <input
