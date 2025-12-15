@@ -147,8 +147,27 @@ export default function UserDetailPage() {
                 <div>
                   <h3 className="font-medium text-gray-900">{subscription.subscriptionName}</h3>
                   <p className="text-sm text-gray-600">
-                    Başlangıç: {subscription.startDate ? new Date(subscription.startDate).toLocaleDateString('tr-TR') : '-'}
+                    Başlangıç: {subscription.startDate && subscription.startDate !== '-'
+                      ? (() => {
+                          // API'den "15/12/2025 23:46" formatında geliyor
+                          const [datePart] = subscription.startDate.split(' ');
+                          const [day, month, year] = datePart.split('/');
+                          const startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                          return isNaN(startDate.getTime()) ? subscription.startDate : startDate.toLocaleDateString('tr-TR');
+                        })()
+                      : '-'}
                   </p>
+                  {subscription.endDate && subscription.endDate !== '-' && (
+                    <p className="text-sm text-gray-600">
+                      Bitiş: {(() => {
+                        // API'den "15/06/2026 23:46" formatında geliyor
+                        const [datePart] = subscription.endDate.split(' ');
+                        const [day, month, year] = datePart.split('/');
+                        const endDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                        return isNaN(endDate.getTime()) ? subscription.endDate : endDate.toLocaleDateString('tr-TR');
+                      })()}
+                    </p>
+                  )}
                 </div>
                 <span className={`px-3 py-1 text-xs rounded-full ${
                   subscription.status === 'ACTIVE'
@@ -176,7 +195,15 @@ export default function UserDetailPage() {
                     Sipariş No: {order.orderNo}
                   </p>
                   <p className="text-sm text-gray-600">
-                    Tarih: {order.orderDate ? new Date(order.orderDate).toLocaleDateString('tr-TR') : '-'}
+                    Tarih: {order.orderDate && order.orderDate !== '-'
+                      ? (() => {
+                          // API'den "15/12/2025 23:22" formatında geliyor
+                          const [datePart] = order.orderDate.split(' ');
+                          const [day, month, year] = datePart.split('/');
+                          const orderDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                          return isNaN(orderDate.getTime()) ? order.orderDate : orderDate.toLocaleDateString('tr-TR');
+                        })()
+                      : '-'}
                   </p>
                 </div>
                 <div className="text-right">

@@ -130,33 +130,33 @@ export default function AddItemPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Ürün Tipi *
-            </label>
-            <select
-              value={formData.itemType}
-              onChange={(e) => setFormData({ ...formData, itemType: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] outline-none transition-all bg-white text-gray-900 placeholder:text-gray-500"
-            >
-              <option value="1">Premium Oyuncak</option>
-              <option value="2">Oyuncak Paketi</option>
-            </select>
+            Ürün Tipi *
+          </label>
+          <select
+            value={formData.itemType}
+            onChange={(e) => setFormData({ ...formData, itemType: e.target.value })}
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] outline-none transition-all bg-white text-gray-900 placeholder:text-gray-500"
+          >
+            <option value="1">Premium Oyuncak</option>
+            <option value="2">Oyuncak Paketi</option>
+          </select>
           </div>
         </div>
 
         {formData.packageLength === '1' && (
           <>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Iyzico Pricing Plan ID
-              </label>
-              <input
-                type="text"
-                value={formData.pricingPlanId}
-                onChange={(e) => setFormData({ ...formData, pricingPlanId: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] outline-none transition-all bg-white text-gray-900 placeholder:text-gray-500"
-                placeholder="Örn: 12345678-1234-1234-1234-123456789012"
-              />
-            </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Iyzico Pricing Plan ID
+          </label>
+          <input
+            type="text"
+            value={formData.pricingPlanId}
+            onChange={(e) => setFormData({ ...formData, pricingPlanId: e.target.value })}
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] outline-none transition-all bg-white text-gray-900 placeholder:text-gray-500"
+            placeholder="Örn: 12345678-1234-1234-1234-123456789012"
+          />
+        </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">

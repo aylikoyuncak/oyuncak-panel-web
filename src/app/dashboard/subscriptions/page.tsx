@@ -5,7 +5,7 @@ import { adminApi } from '@/lib/api-client';
 import { SubscriptionListAdminResponse } from '@/api/generated';
 import Link from 'next/link';
 
-type FilterType = 'all' | 'today' | 'last_week' | 'last_month';
+type FilterType = 'all' | 'today' | 'first_15_days' | 'last_15_days';
 
 export default function SubscriptionsPage() {
   const [subscriptions, setSubscriptions] = useState<SubscriptionListAdminResponse[]>([]);
@@ -96,24 +96,24 @@ export default function SubscriptionsPage() {
               Bugün
             </button>
             <button
-              onClick={() => setFilter('last_week')}
+              onClick={() => setFilter('first_15_days')}
               className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
-                filter === 'last_week'
+                filter === 'first_15_days'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Son 7 Gün
+              Ayın İlk 15 Günü
             </button>
             <button
-              onClick={() => setFilter('last_month')}
+              onClick={() => setFilter('last_15_days')}
               className={`w-full px-4 py-2 rounded-lg transition-all duration-200 font-medium text-sm ${
-                filter === 'last_month'
+                filter === 'last_15_days'
                   ? 'bg-[#e52b3f] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Son 30 Gün
+              Ayın Son 15 Günü
             </button>
           </div>
         </div>
@@ -138,7 +138,10 @@ export default function SubscriptionsPage() {
                 Fiyat
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Başlangıç
+                Başlangıç Tarihi
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Bitiş Tarihi
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Durum
@@ -151,7 +154,7 @@ export default function SubscriptionsPage() {
           <tbody className="bg-white divide-y divide-gray-200">
             {subscriptions.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-6 py-16">
+                <td colSpan={8} className="px-6 py-16">
                   <div className="flex flex-col items-center justify-center text-center">
                     <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                       <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,8 +184,25 @@ export default function SubscriptionsPage() {
                   ₺{subscription.price?.toLocaleString('tr-TR')}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">
-                  {subscription.startDate
-                    ? new Date(subscription.startDate).toLocaleDateString('tr-TR')
+                  {subscription.startDate && subscription.startDate !== '-'
+                    ? (() => {
+                        // API'den "15/12/2025 23:46" formatında geliyor
+                        const [datePart] = subscription.startDate.split(' ');
+                        const [day, month, year] = datePart.split('/');
+                        const startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                        return isNaN(startDate.getTime()) ? subscription.startDate : startDate.toLocaleDateString('tr-TR');
+                      })()
+                    : '-'}
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-900">
+                  {subscription.endDate && subscription.endDate !== '-'
+                    ? (() => {
+                        // API'den "15/06/2026 23:46" formatında geliyor
+                        const [datePart] = subscription.endDate.split(' ');
+                        const [day, month, year] = datePart.split('/');
+                        const endDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                        return isNaN(endDate.getTime()) ? subscription.endDate : endDate.toLocaleDateString('tr-TR');
+                      })()
                     : '-'}
                 </td>
                 <td className="px-6 py-4">

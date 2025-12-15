@@ -43,7 +43,7 @@ export default function OrderDetailPage() {
 
   const handleStatusUpdate = async () => {
     setShowConfirmModal(false);
-    
+
     try {
       setIsUpdating(true);
       const response = await adminApi.apiAdminUpdateOrderStatusesPost({
@@ -115,7 +115,17 @@ export default function OrderDetailPage() {
           <InfoItem label="Sipariş Durumu" value={order.orderStatus} />
           <InfoItem
             label="Sipariş Tarihi"
-            value={order.orderDate ? new Date(order.orderDate).toLocaleDateString('tr-TR') : '-'}
+            value={
+              order.orderDate && order.orderDate !== '-'
+                ? (() => {
+                    // API'den "15/12/2025 23:22" formatında geliyor
+                    const [datePart] = order.orderDate.split(' ');
+                    const [day, month, year] = datePart.split('/');
+                    const orderDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                    return isNaN(orderDate.getTime()) ? order.orderDate : orderDate.toLocaleDateString('tr-TR');
+                  })()
+                : '-'
+            }
           />
         </div>
       </div>
@@ -127,10 +137,6 @@ export default function OrderDetailPage() {
           <InfoItem label="Ad Soyad" value={`${order.firstName} ${order.lastName}`} />
           <InfoItem label="E-posta" value={order.email} />
           <InfoItem label="Telefon" value={order.telephoneNumber} />
-          <InfoItem
-            label="Kayıt Tarihi"
-            value={order.createdAt ? new Date(order.createdAt).toLocaleDateString('tr-TR') : '-'}
-          />
         </div>
       </div>
 

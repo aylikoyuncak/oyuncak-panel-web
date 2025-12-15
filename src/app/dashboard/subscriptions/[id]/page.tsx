@@ -114,7 +114,31 @@ export default function SubscriptionDetailPage() {
           <InfoItem label="Durum" value={subscription?.status} />
           <InfoItem
             label="Başlangıç Tarihi"
-            value={subscription?.startDate ? new Date(subscription.startDate).toLocaleDateString('tr-TR') : '-'}
+            value={
+              subscription?.startDate && subscription.startDate !== '-'
+                ? (() => {
+                    // API'den "15/12/2025 23:46" formatında geliyor
+                    const [datePart] = subscription.startDate.split(' ');
+                    const [day, month, year] = datePart.split('/');
+                    const startDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                    return isNaN(startDate.getTime()) ? subscription.startDate : startDate.toLocaleDateString('tr-TR');
+                  })()
+                : '-'
+            }
+          />
+          <InfoItem
+            label="Bitiş Tarihi"
+            value={
+              subscription?.endDate && subscription.endDate !== '-'
+                ? (() => {
+                    // API'den "15/06/2026 23:46" formatında geliyor
+                    const [datePart] = subscription.endDate.split(' ');
+                    const [day, month, year] = datePart.split('/');
+                    const endDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                    return isNaN(endDate.getTime()) ? subscription.endDate : endDate.toLocaleDateString('tr-TR');
+                  })()
+                : 'Devam ediyor'
+            }
           />
         </div>
       </div>

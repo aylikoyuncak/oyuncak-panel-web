@@ -218,8 +218,14 @@ export default function OrdersPage() {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">
-                  {order.orderDate
-                    ? new Date(order.orderDate).toLocaleDateString('tr-TR')
+                  {order.orderDate && order.orderDate !== '-'
+                    ? (() => {
+                        // API'den "15/12/2025 23:22" formatında geliyor
+                        const [datePart] = order.orderDate.split(' ');
+                        const [day, month, year] = datePart.split('/');
+                        const orderDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                        return isNaN(orderDate.getTime()) ? order.orderDate : orderDate.toLocaleDateString('tr-TR');
+                      })()
                     : '-'}
                 </td>
                 <td className="px-6 py-4 text-right text-sm">

@@ -38,14 +38,14 @@ export default function DashboardPage() {
     <div className="space-y-4">
       {/* Header */}
       <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#e52b3f] to-[#ff4757] flex items-center justify-center shadow-lg">
-            <span className="text-2xl">📊</span>
-          </div>
-          <div>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#e52b3f] to-[#ff4757] flex items-center justify-center shadow-lg">
+              <span className="text-2xl">📊</span>
+            </div>
+            <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              Dashboard
-            </h1>
+                Dashboard
+              </h1>
             <p className="text-sm text-gray-500">Genel bakış ve istatistikler</p>
           </div>
         </div>
