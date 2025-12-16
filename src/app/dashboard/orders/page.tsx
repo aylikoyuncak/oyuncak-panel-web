@@ -51,14 +51,26 @@ export default function OrdersPage() {
 
   const getOrderStatusBadge = (status?: string) => {
     const statusColors: Record<string, string> = {
-      Pending: 'bg-yellow-100 text-yellow-800',
-      Processing: 'bg-blue-100 text-blue-800',
-      Shipped: 'bg-indigo-100 text-indigo-800',
-      Delivered: 'bg-green-100 text-green-800',
-      Cancelled: 'bg-red-100 text-red-800',
-      Returned: 'bg-orange-100 text-orange-800',
+      RECEIVED: 'bg-blue-100 text-blue-800',
+      WAITING: 'bg-yellow-100 text-yellow-800',
+      CARGO: 'bg-indigo-100 text-indigo-800',
+      DELIVERED: 'bg-green-100 text-green-800',
+      REJECTED: 'bg-red-100 text-red-800',
+      PASSIVE: 'bg-gray-100 text-gray-800',
     };
     return statusColors[status || ''] || 'bg-gray-100 text-gray-800';
+  };
+
+  const getOrderStatusLabel = (status?: string | null) => {
+    const labels: Record<string, string> = {
+      DELIVERED: 'Teslim Edildi',
+      REJECTED: 'Ödeme Alınamadı',
+      CARGO: 'Kargoya Verildi',
+      WAITING: 'Hazırlanıyor',
+      RECEIVED: 'Sipariş Alındı',
+      PASSIVE: 'İptal Edildi',
+    };
+    return labels[status || ''] || status || '-';
   };
 
   if (isLoading) {
@@ -214,7 +226,7 @@ export default function OrdersPage() {
                       order.orderStatus || undefined
                     )}`}
                   >
-                    {order.orderStatus}
+                    {getOrderStatusLabel(order.orderStatus)}
                   </span>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">

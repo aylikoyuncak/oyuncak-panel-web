@@ -7,6 +7,18 @@ import { OrderDetailResponse } from '@/api/generated';
 import { getBoxDisplayName } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
+const getOrderStatusLabel = (status?: string | null) => {
+  const labels: Record<string, string> = {
+    DELIVERED: 'Teslim Edildi',
+    REJECTED: 'Ödeme Alınamadı',
+    CARGO: 'Kargoya Verildi',
+    WAITING: 'Hazırlanıyor',
+    RECEIVED: 'Sipariş Alındı',
+    PASSIVE: 'İptal Edildi',
+  };
+  return labels[status || ''] || status || '-';
+};
+
 export default function OrderDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -112,7 +124,7 @@ export default function OrderDetailPage() {
           <InfoItem label="Ürün" value={order.itemName} />
           <InfoItem label="Fiyat" value={`₺${order.price?.toLocaleString('tr-TR')}`} />
           <InfoItem label="Ödeme Durumu" value={order.paymentStatus} />
-          <InfoItem label="Sipariş Durumu" value={order.orderStatus} />
+          <InfoItem label="Sipariş Durumu" value={getOrderStatusLabel(order.orderStatus)} />
           <InfoItem
             label="Sipariş Tarihi"
             value={
@@ -186,12 +198,12 @@ export default function OrderDetailPage() {
               onChange={(e) => setNewOrderStatus(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] text-gray-900"
             >
-              <option value="Pending">Pending (Beklemede)</option>
-              <option value="Processing">Processing (Hazırlanıyor)</option>
-              <option value="Shipped">Shipped (Kargoya Verildi)</option>
-              <option value="Delivered">Delivered (Teslim Edildi)</option>
-              <option value="Cancelled">Cancelled (İptal Edildi)</option>
-              <option value="Returned">Returned (İade Edildi)</option>
+              <option value="RECEIVED">Sipariş Alındı</option>
+              <option value="WAITING">Hazırlanıyor</option>
+              <option value="CARGO">Kargoya Verildi</option>
+              <option value="DELIVERED">Teslim Edildi</option>
+              <option value="REJECTED">Ödeme Alınamadı</option>
+              <option value="PASSIVE">İptal Edildi</option>
             </select>
           </div>
           <button
@@ -220,8 +232,8 @@ export default function OrderDetailPage() {
               </div>
             </div>
             <p className="text-gray-700 mb-6">
-              Sipariş durumunu <span className="font-semibold text-gray-900">{order.orderStatus}</span> durumundan{' '}
-              <span className="font-semibold text-[#e52b3f]">{newOrderStatus}</span> durumuna değiştirmek istediğinizden emin misiniz?
+              Sipariş durumunu <span className="font-semibold text-gray-900">{getOrderStatusLabel(order.orderStatus)}</span> durumundan{' '}
+              <span className="font-semibold text-[#e52b3f]">{getOrderStatusLabel(newOrderStatus)}</span> durumuna değiştirmek istediğinizden emin misiniz?
             </p>
             <div className="flex gap-3">
               <button
