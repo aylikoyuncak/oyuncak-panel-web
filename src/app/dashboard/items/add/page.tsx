@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { adminApi } from '@/lib/api-client';
-import { ItemTypes } from '@/api/generated';
+import { ItemTypes, Box } from '@/api/generated';
 import toast from 'react-hot-toast';
 
 export default function AddItemPage() {
@@ -20,6 +20,8 @@ export default function AddItemPage() {
     pricingPlanId: '',
     mostPreffered: false,
     mostPrefferedTitle: '',
+    boxNumber: '1',
+    isVisible: true,
   });
 
   const handleSubmit = async (e: FormEvent) => {
@@ -38,6 +40,8 @@ export default function AddItemPage() {
         pricingPlanId: formData.pricingPlanId || undefined,
         mostPreffered: formData.mostPreffered,
         mostPrefferedTitle: formData.mostPrefferedTitle || undefined,
+        boxNumber: parseInt(formData.boxNumber) as Box,
+        isVisible: formData.isVisible,
         isDeleted: false,
       });
 
@@ -140,6 +144,41 @@ export default function AddItemPage() {
             <option value="1">Premium Oyuncak</option>
             <option value="2">Oyuncak Paketi</option>
           </select>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Kutu Numarası *
+            </label>
+            <select
+              value={formData.boxNumber}
+              onChange={(e) => setFormData({ ...formData, boxNumber: e.target.value })}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] outline-none transition-all bg-white text-gray-900 placeholder:text-gray-500"
+            >
+              <option value="1">📦 Kutu 1 (0-2 Yaş)</option>
+              <option value="2">📦 Kutu 2 (3-5 Yaş)</option>
+              <option value="3">📦 Kutu 3 (6-8 Yaş)</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Görünürlük
+            </label>
+            <div className="flex items-center h-[42px]">
+              <input
+                type="checkbox"
+                id="isVisible"
+                checked={formData.isVisible}
+                onChange={(e) => setFormData({ ...formData, isVisible: e.target.checked })}
+                className="w-5 h-5 text-[#e52b3f] border-2 border-gray-300 rounded-lg focus:ring-[#e52b3f] focus:ring-2"
+              />
+              <label htmlFor="isVisible" className="ml-2 text-sm font-medium text-gray-700">
+                Ürün görünür olsun
+              </label>
+            </div>
           </div>
         </div>
 

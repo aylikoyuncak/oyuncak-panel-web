@@ -1156,6 +1156,15 @@
         "tags": [
           "Base"
         ],
+        "parameters": [
+          {
+            "name": "boxNumber",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Box"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -3462,6 +3471,12 @@
           "mostPrefferedTitle": {
             "type": "string",
             "nullable": true
+          },
+          "boxNumber": {
+            "$ref": "#/components/schemas/Box"
+          },
+          "isVisible": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -5737,7 +5752,7 @@
   },
   "security": [
     {
-      "Bearer": []
+      "Bearer": [ ]
     }
   ]
 }

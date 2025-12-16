@@ -666,11 +666,18 @@ import {
 const configuration = new Configuration();
 const apiInstance = new BaseApi(configuration);
 
-const { status, data } = await apiInstance.apiBasePreferencesItemsGet();
+let boxNumber: Box; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.apiBasePreferencesItemsGet(
+    boxNumber
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **boxNumber** | **Box** |  | (optional) defaults to undefined|
 
 
 ### Return type

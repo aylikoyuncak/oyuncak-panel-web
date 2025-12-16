@@ -3,7 +3,7 @@
 import { useState, FormEvent, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { adminApi } from '@/lib/api-client';
-import { ItemDto, ItemTypes } from '@/api/generated';
+import { ItemDto, ItemTypes, Box } from '@/api/generated';
 import toast from 'react-hot-toast';
 
 export default function EditItemPage() {
@@ -24,6 +24,8 @@ export default function EditItemPage() {
     pricingPlanId: '',
     mostPreffered: false,
     mostPrefferedTitle: '',
+    boxNumber: '1',
+    isVisible: true,
     isDeleted: false,
   });
 
@@ -48,6 +50,8 @@ export default function EditItemPage() {
           pricingPlanId: item.pricingPlanId || '',
           mostPreffered: item.mostPreffered || false,
           mostPrefferedTitle: item.mostPrefferedTitle || '',
+          boxNumber: item.boxNumber?.toString() || '1',
+          isVisible: item.isVisible ?? true,
           isDeleted: item.isDeleted || false,
         });
       }
@@ -76,6 +80,8 @@ export default function EditItemPage() {
         pricingPlanId: formData.pricingPlanId || undefined,
         mostPreffered: formData.mostPreffered,
         mostPrefferedTitle: formData.mostPrefferedTitle || undefined,
+        boxNumber: parseInt(formData.boxNumber) as Box,
+        isVisible: formData.isVisible,
         isDeleted: formData.isDeleted,
       });
 
@@ -189,6 +195,41 @@ export default function EditItemPage() {
             <option value="1">Premium Oyuncak</option>
             <option value="2">Oyuncak Paketi</option>
           </select>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Kutu Numarası *
+            </label>
+            <select
+              value={formData.boxNumber}
+              onChange={(e) => setFormData({ ...formData, boxNumber: e.target.value })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder:text-gray-500"
+            >
+              <option value="1">📦 Kutu 1 (0-2 Yaş)</option>
+              <option value="2">📦 Kutu 2 (3-5 Yaş)</option>
+              <option value="3">📦 Kutu 3 (6-8 Yaş)</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Görünürlük
+            </label>
+            <div className="flex items-center h-[42px]">
+              <input
+                type="checkbox"
+                id="isVisible"
+                checked={formData.isVisible}
+                onChange={(e) => setFormData({ ...formData, isVisible: e.target.checked })}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label htmlFor="isVisible" className="ml-2 text-sm font-medium text-gray-700">
+                Ürün görünür olsun
+              </label>
+            </div>
           </div>
         </div>
 

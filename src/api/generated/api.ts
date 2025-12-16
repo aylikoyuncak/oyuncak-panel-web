@@ -280,6 +280,8 @@ export interface ItemDto {
     'mostPreffered'?: boolean;
     'isDeleted'?: boolean;
     'mostPrefferedTitle'?: string | null;
+    'boxNumber'?: Box;
+    'isVisible'?: boolean;
 }
 
 
@@ -3419,10 +3421,11 @@ export const BaseApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {Box} [boxNumber] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBasePreferencesItemsGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiBasePreferencesItemsGet: async (boxNumber?: Box, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/base/preferences-items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3438,6 +3441,10 @@ export const BaseApiAxiosParamCreator = function (configuration?: Configuration)
             // authentication Bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (boxNumber !== undefined) {
+                localVarQueryParameter['boxNumber'] = boxNumber;
+            }
 
 
     
@@ -3761,11 +3768,12 @@ export const BaseApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {Box} [boxNumber] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiBasePreferencesItemsGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PreferencesItemsViewModelBaseCommandResult>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiBasePreferencesItemsGet(options);
+        async apiBasePreferencesItemsGet(boxNumber?: Box, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PreferencesItemsViewModelBaseCommandResult>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiBasePreferencesItemsGet(boxNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BaseApi.apiBasePreferencesItemsGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3942,11 +3950,12 @@ export const BaseApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {Box} [boxNumber] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBasePreferencesItemsGet(options?: RawAxiosRequestConfig): AxiosPromise<PreferencesItemsViewModelBaseCommandResult> {
-            return localVarFp.apiBasePreferencesItemsGet(options).then((request) => request(axios, basePath));
+        apiBasePreferencesItemsGet(boxNumber?: Box, options?: RawAxiosRequestConfig): AxiosPromise<PreferencesItemsViewModelBaseCommandResult> {
+            return localVarFp.apiBasePreferencesItemsGet(boxNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4093,10 +4102,11 @@ export interface BaseApiInterface {
 
     /**
      * 
+     * @param {Box} [boxNumber] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    apiBasePreferencesItemsGet(options?: RawAxiosRequestConfig): AxiosPromise<PreferencesItemsViewModelBaseCommandResult>;
+    apiBasePreferencesItemsGet(boxNumber?: Box, options?: RawAxiosRequestConfig): AxiosPromise<PreferencesItemsViewModelBaseCommandResult>;
 
     /**
      * 
@@ -4264,11 +4274,12 @@ export class BaseApi extends BaseAPI implements BaseApiInterface {
 
     /**
      * 
+     * @param {Box} [boxNumber] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public apiBasePreferencesItemsGet(options?: RawAxiosRequestConfig) {
-        return BaseApiFp(this.configuration).apiBasePreferencesItemsGet(options).then((request) => request(this.axios, this.basePath));
+    public apiBasePreferencesItemsGet(boxNumber?: Box, options?: RawAxiosRequestConfig) {
+        return BaseApiFp(this.configuration).apiBasePreferencesItemsGet(boxNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

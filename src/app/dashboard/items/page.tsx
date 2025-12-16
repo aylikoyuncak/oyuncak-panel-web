@@ -101,6 +101,9 @@ export default function ItemsPage() {
                   Tip
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                  Kutu
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                   Fiyat
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
@@ -108,6 +111,9 @@ export default function ItemsPage() {
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                   Paket Süresi
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                  Görünürlük
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                   Durum
@@ -120,7 +126,7 @@ export default function ItemsPage() {
             <tbody className="bg-white divide-y divide-gray-200">
               {items.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-16">
+                  <td colSpan={9} className="px-6 py-16">
                     <div className="flex flex-col items-center justify-center text-center">
                       <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                         <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,6 +166,14 @@ export default function ItemsPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
+                      <span className="inline-flex items-center gap-1 text-sm text-gray-700">
+                        {item.boxNumber === 1 && '📦 Kutu 1 (0-2 Yaş)'}
+                        {item.boxNumber === 2 && '📦 Kutu 2 (3-5 Yaş)'}
+                        {item.boxNumber === 3 && '📦 Kutu 3 (6-8 Yaş)'}
+                        {!item.boxNumber && '-'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
                       <span className="text-sm font-semibold text-gray-900">
                         ₺{item.price?.toLocaleString('tr-TR')}
                       </span>
@@ -171,6 +185,17 @@ export default function ItemsPage() {
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-700">
                       {item.packageLength ? `${item.packageLength} ay` : '-'}
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                          item.isVisible
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-gray-100 text-gray-800'
+                        }`}
+                      >
+                        {item.isVisible ? '👁️ Görünür' : '🙈 Gizli'}
+                      </span>
                     </td>
                     <td className="px-6 py-4">
                       <span
@@ -249,17 +274,31 @@ export default function ItemsPage() {
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <span>{item.itemType === 1 ? '🎁 Premium' : '📦 Paket'}</span>
                     {item.packageLength && <span>• {item.packageLength} ay</span>}
+                    {item.boxNumber === 1 && <span>• Kutu 1 (0-2 Yaş)</span>}
+                    {item.boxNumber === 2 && <span>• Kutu 2 (3-5 Yaş)</span>}
+                    {item.boxNumber === 3 && <span>• Kutu 3 (6-8 Yaş)</span>}
                   </div>
                 </div>
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    item.isDeleted
-                      ? 'bg-red-100 text-red-800'
-                      : 'bg-green-100 text-green-800'
-                  }`}
-                >
-                  {item.isDeleted ? 'Silinmiş' : 'Aktif'}
-                </span>
+                <div className="flex gap-2">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      item.isVisible
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-gray-100 text-gray-800'
+                    }`}
+                  >
+                    {item.isVisible ? '👁️' : '🙈'}
+                  </span>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      item.isDeleted
+                        ? 'bg-red-100 text-red-800'
+                        : 'bg-green-100 text-green-800'
+                    }`}
+                  >
+                    {item.isDeleted ? 'Silinmiş' : 'Aktif'}
+                  </span>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>

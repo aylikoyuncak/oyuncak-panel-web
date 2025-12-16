@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **mostPreffered** | **boolean** |  | [optional] [default to undefined]
 **isDeleted** | **boolean** |  | [optional] [default to undefined]
 **mostPrefferedTitle** | **string** |  | [optional] [default to undefined]
+**boxNumber** | [**Box**](Box.md) |  | [optional] [default to undefined]
+**isVisible** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -36,6 +38,8 @@ const instance: ItemDto = {
     mostPreffered,
     isDeleted,
     mostPrefferedTitle,
+    boxNumber,
+    isVisible,
 };
 ```
 
