@@ -14,6 +14,7 @@ export default function AddCampaignPage() {
     discountAmount: '',
     discountPercentage: '',
     expiration: '',
+    maxUsageCount: '',
   });
 
   const handleSubmit = async (e: FormEvent) => {
@@ -26,6 +27,7 @@ export default function AddCampaignPage() {
         discountAmount: discountType === 'amount' ? parseFloat(formData.discountAmount) : undefined,
         discountPercentage: discountType === 'percentage' ? parseFloat(formData.discountPercentage) : undefined,
         expiration: formData.expiration,
+        maxUsageCount: formData.maxUsageCount ? parseInt(formData.maxUsageCount, 10) : undefined,
       });
 
       if (response.data.isSucceed) {
@@ -140,6 +142,22 @@ export default function AddCampaignPage() {
             </div>
           </div>
         )}
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Maksimum Kullanım Sayısı
+          </label>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            value={formData.maxUsageCount}
+            onChange={(e) => setFormData({ ...formData, maxUsageCount: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#e52b3f] focus:border-[#e52b3f] text-gray-900 placeholder:text-gray-500"
+            placeholder="Boş bırakılırsa sınırsız kullanılabilir"
+          />
+          <p className="mt-1 text-xs text-gray-500">1 = tek seferlik, N = N kere kullanılabilir. Boş = sınırsız</p>
+        </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">

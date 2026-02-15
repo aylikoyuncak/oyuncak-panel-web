@@ -138,6 +138,8 @@ export interface CampaignDto {
     'discountAmount'?: number | null;
     'discountPercentage'?: number | null;
     'expiration'?: string;
+    'maxUsageCount'?: number | null;
+    'usedCount'?: number;
 }
 export interface CampaignDtoBaseCommandResult {
     'isSucceed'?: boolean;
@@ -366,6 +368,7 @@ export interface OrderListAdminResponse {
     'email'?: string | null;
     'firstName'?: string | null;
     'lastName'?: string | null;
+    'campaignCode'?: string | null;
     'createdAt'?: string;
 }
 export interface OrderListAdminResponsePagedResult {
@@ -392,6 +395,7 @@ export interface OrderListResponse {
     'email'?: string | null;
     'firstName'?: string | null;
     'lastName'?: string | null;
+    'campaignCode'?: string | null;
     'createdAt'?: string;
 }
 export interface OrderListResponsePagedResult {
@@ -413,6 +417,7 @@ export interface OrderUserDto {
     'paymentStatus'?: string | null;
     'orderStatus'?: string | null;
     'orderDate'?: string | null;
+    'campaignCode'?: string | null;
 }
 export interface PaginationRequest {
     'pageNumber'?: number;
@@ -680,6 +685,7 @@ export interface SubscriptionListAdminResponse {
     'email'?: string | null;
     'firstName'?: string | null;
     'lastName'?: string | null;
+    'campaignCode'?: string | null;
     'createdAt'?: string;
 }
 export interface SubscriptionListAdminResponsePagedResult {
@@ -707,6 +713,7 @@ export interface SubscriptionListResponse {
     'email'?: string | null;
     'firstName'?: string | null;
     'lastName'?: string | null;
+    'campaignCode'?: string | null;
     'createdAt'?: string;
 }
 export interface SubscriptionListResponsePagedResult {
@@ -801,6 +808,7 @@ export interface SubscriptionUserDto {
     'price'?: number;
     'status'?: string | null;
     'subscriptionReferenceId'?: string | null;
+    'campaignCode'?: string | null;
 }
 export interface TokenModel {
     'token'?: string | null;

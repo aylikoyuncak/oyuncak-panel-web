@@ -122,6 +122,7 @@ export default function OrderDetailPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <InfoItem label="Sipariş No" value={order.orderNo} />
           <InfoItem label="Ürün" value={order.itemName} />
+          <InfoItem label="İndirim Kuponu" value={order.campaignCode} />
           <InfoItem label="Fiyat" value={`₺${order.price?.toLocaleString('tr-TR')}`} />
           <InfoItem label="Ödeme Durumu" value={order.paymentStatus} />
           <InfoItem label="Sipariş Durumu" value={getOrderStatusLabel(order.orderStatus)} />

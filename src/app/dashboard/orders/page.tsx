@@ -173,6 +173,9 @@ export default function OrdersPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Tarih
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                İndirim Kuponu
+              </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                 İşlemler
               </th>
@@ -181,7 +184,7 @@ export default function OrdersPage() {
           <tbody className="bg-white divide-y divide-gray-200">
             {orders.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-6 py-16">
+                <td colSpan={9} className="px-6 py-16">
                   <div className="flex flex-col items-center justify-center text-center">
                     <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                       <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,6 +242,15 @@ export default function OrdersPage() {
                         return isNaN(orderDate.getTime()) ? order.orderDate : orderDate.toLocaleDateString('tr-TR');
                       })()
                     : '-'}
+                </td>
+                <td className="px-6 py-4">
+                  {order.campaignCode ? (
+                    <code className="text-xs font-mono bg-amber-50 text-amber-800 px-2 py-1 rounded">
+                      {order.campaignCode}
+                    </code>
+                  ) : (
+                    <span className="text-gray-400">-</span>
+                  )}
                 </td>
                 <td className="px-6 py-4 text-right text-sm">
                   <Link

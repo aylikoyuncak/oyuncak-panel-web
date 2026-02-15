@@ -109,6 +109,9 @@ export default function CampaignsPage() {
                 İndirim Miktarı
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Kullanım
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Son Kullanma
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -122,7 +125,7 @@ export default function CampaignsPage() {
             <tbody className="bg-white divide-y divide-gray-100">
             {campaigns.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-6 py-16">
+                <td colSpan={7} className="px-6 py-16">
                   <div className="flex flex-col items-center justify-center text-center">
                     <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
                       <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,6 +173,11 @@ export default function CampaignsPage() {
                   {campaign.discountAmount
                     ? `₺${campaign.discountAmount.toLocaleString('tr-TR')}`
                     : `%${campaign.discountPercentage}`}
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-900">
+                  {campaign.maxUsageCount != null
+                    ? `${campaign.usedCount ?? 0} / ${campaign.maxUsageCount}`
+                    : `${campaign.usedCount ?? 0} (sınırsız)`}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">
                   {campaign.expiration

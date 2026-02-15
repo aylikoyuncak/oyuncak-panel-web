@@ -112,6 +112,7 @@ export default function SubscriptionDetailPage() {
           <InfoItem label="Paket" value={subscription?.itemName} />
           <InfoItem label="Fiyat" value={`₺${subscription?.price?.toLocaleString('tr-TR')}`} />
           <InfoItem label="Durum" value={subscription?.status} />
+          <InfoItem label="İndirim Kuponu" value={subscription?.campaignCode} />
           <InfoItem
             label="Başlangıç Tarihi"
             value={
